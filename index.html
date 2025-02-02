@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sumaiya!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        header {
+            background-color: #ff6f61;
+            padding: 20px;
+            color: white;
+            position: relative;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .photo-grid img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .photo-grid img:hover {
+            transform: scale(1.05);
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6f61;
+            animation: confetti-fall 5s linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(720deg); }
+        }
+        .message-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff6f61;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+        .icon {
+            font-size: 2rem;
+            margin: 10px;
+            color: #ff6f61;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Happy Birthday Sumaiya! 🎉</h1>
+        <div class="icon">
+            <i class="fas fa-birthday-cake"></i>
+            <i class="fas fa-gift"></i>
+            <i class="fas fa-heart"></i>
+        </div>
+    </header>
+    <div class="container">
+        <p class="quote">"You are never too old to set another goal or to dream a new dream." - C.S. Lewis</p>
+        <p class="quote">"The more you praise and celebrate your life, the more there is in life to celebrate." - Oprah Winfrey</p>
+        
+        <div class="photo-grid">
+            <!-- Replace the image sources with your actual image paths -->
+            <img src="sumaiya1.jpg" alt="Sumaiya's Photo 1" width="300">
+            <img src="sumaiya2.jpg" alt="Sumaiya's Photo 2" width="300">
+            <img src="sumaiya3.jpg" alt="Sumaiya's Photo 3" width="300">
+        </div>
+
+        <p>Dear Sumaiya,</p>
+        <p>On your special day, I want you to know how much you mean to me. You are an amazing friend, and I am so grateful to have you in my life. May this year bring you endless joy, success, and unforgettable memories. Keep shining bright!</p>
+        <p>With lots of love,</p>
+        <p>[Your Name]</p>
+    </div>
+    <footer>
+        <p>Created with ❤️ by [Your Name]</p>
+    </footer>
+
+    <!-- Confetti Animation -->
+    <div class="confetti" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="confetti" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="confetti" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="confetti" style="left: 40%; animation-delay: 3s;"></div>
+    <div class="confetti" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="confetti" style="left: 60%; animation-delay: 5s;"></div>
+    <div class="confetti" style="left: 70%; animation-delay: 6s;"></div>
+    <div class="confetti" style="left: 80%; animation-delay: 7s;"></div>
+    <div class="confetti" style="left: 90%; animation-delay: 8s;"></div>
+
+    <!-- Message Popup -->
+    <div class="message-popup" id="messagePopup">
+        <p id="popupMessage"></p>
+    </div>
+
+    <script>
+        // Random messages for the popup
+        const messages = [
+            "You're amazing, Sumaiya! 🎂",
+            "Keep shining bright! ✨",
+            "Wishing you endless joy! 🎉",
+            "You're the best! 💖",
+            "Happy Birthday, superstar! 🌟",
+            "May all your dreams come true! 🌈",
+            "You're one of a kind! 🎁",
+            "Stay fabulous! 💃",
+            "Sending you lots of love! 💌",
+            "Have a blast today! 🥳"
+        ];
+
+        // Function to show a random message
+        function showRandomMessage() {
+            const popup = document.getElementById('messagePopup');
+            const message = document.getElementById('popupMessage');
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            message.textContent = randomMessage;
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000); // Hide after 2 seconds
+        }
+
+        // Add click event listener to the body
+        document.body.addEventListener('click', showRandomMessage);
+    </script>
+</body>
+</html>
