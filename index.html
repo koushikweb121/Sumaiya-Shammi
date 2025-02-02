@@ -50,6 +50,9 @@
             transition: transform 0.3s ease;
             cursor: pointer;
         }
+        .photo-grid img:hover {
+            transform: scale(1.03);
+        }
         .quote {
             font-style: italic;
             font-size: 1.4rem;
@@ -89,8 +92,25 @@
             width: 80%;
             text-align: center;
         }
+        .music-note {
+            animation: pulse 2s infinite;
+            cursor: pointer;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .music-popup {
+            background: linear-gradient(135deg, #7c4dff, #3a1ba3);
+        }
+        .instruction {
+            font-size: 1.1rem;
+            color: #7c4dff;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
 
-        /* Mobile Optimization */
         @media (max-width: 480px) {
             h1 {
                 font-size: 2rem;
@@ -114,25 +134,24 @@
             <i class="fas fa-gift" style="color: #ff6f61;"></i>
             <i class="fas fa-heart" style="color: #ff4081;"></i>
             <i class="fas fa-star" style="color: #ffd740;"></i>
-            <i class="fas fa-music" style="color: #7c4dff;"></i>
+            <i class="fas fa-music music-note" style="color: #7c4dff;"></i>
         </div>
     </header>
     <div class="container">
-        <p class="quote">
-            <i class="fas fa-quote-left"></i> 
-            You are never too old to dream new dreams 
-            <i class="fas fa-quote-right"></i>
-            <br>- C.S. Lewis
-        </p>
+        <p class="instruction">🎵 Click the magical music note image below to play your birthday song! 🎶</p>
 
         <div class="photo-grid">
-            <img src="sumaiya1.jpg" alt="Sumaiya" data-message="You're amazing! 🎂">
-            <img src="sumaiya2.jpg" alt="Sumaiya" data-message="Keep shining! ✨">
-            <img src="sumaiya3.jpg" alt="Sumaiya" data-message="Endless joy! 🎉">
-            <img src="sumaiya4.jpg" alt="Sumaiya" data-message="You're the best! 💖">
-            <img src="sumaiya5.jpg" alt="Sumaiya" data-message="Superstar! 🌟">
-            <img src="sumaiya6.jpg" alt="Sumaiya" data-message="Dreams come true! 🌈">
+            <img src="sumaiya1.jpg" alt="Sumaiya" data-message="You are the definition of pure and irresistible cuteness! 🎂">
+            <img src="sumaiya2.jpg" alt="Sumaiya" data-message="Your intelligence shines brighter than anyone else's—you’re simply brilliant! ✨">
+            <img src="sumaiya3.jpg" alt="Sumaiya" data-message="Your confidence is magnetic—you light up every room you walk into! 🎉">
+            <img src="sumaiya4.jpg" alt="Sumaiya" data-message="Your elegance and grace are truly unmatched—you’re stunning in every way! 💖">
+            <img src="sumaiya5.jpg" alt="Sumaiya" data-message="Your curves are a perfect reflection of your natural beauty—absolutely breathtaking!🌟">
+            <img src="sumaiya6.jpg" alt="Sumaiya" data-message="Your p*ssy Call me like Sunshine,and it spread like the rainbow.🌟">
+            <img src="sumaiya6.jpg" alt="Sumaiya" class="music-trigger" 
+                 data-message="Let the celebrations begin! 🎶 Click again to stop the music">
         </div>
+
+        <audio id="birthdayAudio" src="Sumaya.mp3" preload="auto"></audio>
 
         <p class="quote">
             <i class="fas fa-quote-left"></i> 
@@ -143,29 +162,49 @@
 
         <p>🎈 Dear Sumaiya,</p>
         <p><i class="fas fa-sparkles"></i> May your year be filled with laughter, love, and magical moments! <i class="fas fa-sparkles"></i></p>
-        <p>With love,<br>[Your Name]</p>
+        <p>With love,<br>[Your Friend]</p>
     </div>
     <footer>
         <p><i class="fas fa-hands-heart"></i> Created with Love by [Your Name]</p>
     </footer>
 
-    <!-- Message Popup -->
     <div class="message-popup" id="messagePopup">
         <p id="popupMessage"></p>
     </div>
 
     <script>
-        // Image click handler
+        const audioElement = document.getElementById('birthdayAudio');
+        let isMusicPlaying = false;
+
         document.querySelectorAll('.photo-grid img').forEach(img => {
             img.addEventListener('click', (e) => {
                 const message = e.target.dataset.message;
                 const popup = document.getElementById('messagePopup');
-                document.getElementById('popupMessage').textContent = message;
+                
+                popup.innerHTML = `<p>${message}</p>${isMusicPlaying ? '<i class="fas fa-volume-up"></i>' : ''}`;
+                
+                if (e.target.classList.contains('music-trigger')) {
+                    popup.classList.add('music-popup');
+                    if (!isMusicPlaying) {
+                        audioElement.play();
+                        isMusicPlaying = true;
+                    } else {
+                        audioElement.pause();
+                        isMusicPlaying = false;
+                    }
+                } else {
+                    popup.classList.remove('music-popup');
+                }
+
                 popup.style.display = 'block';
                 setTimeout(() => {
                     popup.style.display = 'none';
-                }, 2000);
+                }, 3000);
             });
+        });
+
+        document.querySelector('.fa-music').addEventListener('click', () => {
+            document.querySelector('.music-trigger').click();
         });
     </script>
 </body>
